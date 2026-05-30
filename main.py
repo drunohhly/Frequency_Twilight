@@ -33,13 +33,9 @@ most_common_words = word_counts.most_common(20)
 dictionary = dict(most_common_words)
 print(dictionary)
 
-
-#сортировка по частотности
-sorted_common_words = sorted(most_common_words, key=lambda x: x[1], reverse=True)
-
 #сортировка на отдельные списки для создания осей
-words = [item[0] for item in sorted_common_words]
-numbers = [item[1] for item in sorted_common_words]
+words = [item[0] for item in most_common_words]
+numbers = [item[1] for item in most_common_words]
 
 #создание диаграммы
 plt.figure(figsize = (8,5)) #установка ширины и высоты для холста, на котором выведется диаграмма
