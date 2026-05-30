@@ -14,4 +14,9 @@ text = re.sub(r'\s+', ' ', text)
 #токенизация
 nltk.download('punkt_tab')
 tokens = word_tokenize(text)
-print(tokens)
+
+#удаление стоп-слов
+nltk.download('stopwords')
+stop_words = set(stopwords.words('russian'))
+tokens_without_prepositions = [word for word in tokens if word not in stop_words]
+print(tokens_without_prepositions)
