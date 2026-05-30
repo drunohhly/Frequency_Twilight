@@ -1,5 +1,6 @@
 import re
 import nltk
+import pymorphy3
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 
@@ -19,4 +20,8 @@ tokens = word_tokenize(text)
 nltk.download('stopwords')
 stop_words = set(stopwords.words('russian'))
 tokens_without_prepositions = [word for word in tokens if word not in stop_words]
-print(tokens_without_prepositions)
+
+#лемматизация
+morph = pymorphy3.MorphAnalyzer()
+lemmas = [morph.parse(token)[0].normal_form for token in tokens_without_prepositions]
+print(lemmas)
