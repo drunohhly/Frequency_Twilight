@@ -3,6 +3,7 @@ import nltk
 import pymorphy3
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+from collections import Counter
 
 text = open("text.txt", "r", encoding="utf-8")
 text = text.read()
@@ -24,4 +25,8 @@ tokens_without_prepositions = [word for word in tokens if word not in stop_words
 #лемматизация
 morph = pymorphy3.MorphAnalyzer()
 lemmas = [morph.parse(token)[0].normal_form for token in tokens_without_prepositions]
-print(lemmas)
+
+#подсчет частотых слов и создание словаря
+word_counts = Counter(lemmas)
+most_common_words = word_counts.most_common(20)
+print(most_common_words)
