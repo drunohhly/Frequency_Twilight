@@ -30,7 +30,9 @@ lemmas = [morph.parse(token)[0].normal_form for token in tokens_without_preposit
 #подсчет частотых слов и создание словаря
 word_counts = Counter(lemmas)
 most_common_words = word_counts.most_common(20)
-print(most_common_words)
+dictionary = dict(most_common_words)
+print(dictionary)
+
 
 #сортировка по частотности
 sorted_common_words = sorted(most_common_words, key=lambda x: x[1], reverse=True)
